@@ -1,0 +1,13 @@
+video 7 : 7:55 api
+video 8: 19:40
+video 9: 10:15
+video 10: 5:55
+video 11 oko 4 min 
+video 3 20.12, 26:00
+video 4 21:30
+video 13 51min(fetch za autorizaciju spotify hosta)
+video 13 52min(fetch ako korisnik nije authoriziran)
+video 15 1:50 (play/pause song)-views
+video 15 5:50(play/pause)-utils
+video 15 10:35(apli url za play/pause unutar fatcha u music-playeru 23.linia)
+video 16 7:13 (fetch za skip song music_player)
