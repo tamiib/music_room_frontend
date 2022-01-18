@@ -53,26 +53,27 @@ export default class CreateRoomPage extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        votes_to_skip: this.state.votesToSkip,
-        guest_can_pause: this.state.guestCanPause,
+        host_id: 0,
+        number_of_votes: this.state.votesToSkip,
+        guests_can_pause: this.state.guestCanPause,
       }),
     };
-    fetch("/api/create-room", requestOptions)
+    fetch("http://127.0.0.1:5000/room", requestOptions)
       .then((response) => response.json())
       .then((data) => this.props.history.push("/room/" + data.code));
   }
 
   handleUpdateButtonPressed() {
     const requestOptions = {
-      method: "PATCH",
+      method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        votes_to_skip: this.state.votesToSkip,
-        guest_can_pause: this.state.guestCanPause,
+        number_of_votes: this.state.votesToSkip,
+        guests_can_pause: this.state.guestCanPause,
         code: this.props.roomCode,
       }),
     };
-    fetch("/api/update-room", requestOptions).then((response) => {
+    fetch(`http://127.0.0.1:5000/room/${this.props.roomCode}`, requestOptions).then((response) => {
       if (response.ok) {
         this.setState({
           successMsg: "Room updated successfully!",
@@ -128,9 +129,9 @@ export default class CreateRoomPage extends Component {
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Collapse
-            in={this.state.errorMsg != "" || this.state.successMsg != ""}
+            in={this.state.errorMsg !== "" || this.state.successMsg !== ""}
           >
-            {this.state.successMsg != "" ? (
+            {this.state.successMsg !== "" ? (
               <Alert
                 severity="success"
                 onClose={() => {

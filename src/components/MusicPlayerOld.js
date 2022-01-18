@@ -40,20 +40,20 @@ export default class MusicPlayer extends Component {
   }
 
   render() {
-    const songProgress = (this.props.progress_ms / this.props.item.duration_ms) * 100;
+    const songProgress = (this.props.time / this.props.duration) * 100;
 
     return (
       <Card>
         <Grid container alignItems="center">
           <Grid item align="center" xs={4}>
-            <img src={this.props.item.album.images[0].url} height="100%" width="100%" />
+            <img src={this.props.image_url} height="100%" width="100%" />
           </Grid>
           <Grid item align="center" xs={8}>
             <Typography component="h5" variant="h5">
-              {this.props.item.name}
+              {this.props.title}
             </Typography>
             <Typography color="textSecondary" variant="subtitle1">
-              {this.props.item.artists[0].name}
+              {this.props.artist}
             </Typography>
             <div>
               <IconButton

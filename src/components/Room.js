@@ -34,7 +34,7 @@ export default class Room extends Component {
   }
 
   getRoomDetails() {
-    return fetch("/api/get-room" + "?code=" + this.roomCode)
+    return fetch("http://127.0.0.1:5000/room/code/" + this.roomCode)
       .then((response) => {
         if (!response.ok) {
           this.props.leaveRoomCallback();
@@ -71,7 +71,7 @@ export default class Room extends Component {
   }
 
   getCurrentSong() {
-    fetch("/spotify/current-song")
+    fetch("http://127.0.0.1:5000/spotify/current-song")
       .then((response) => {
         if (!response.ok) {
           return {};
@@ -90,7 +90,7 @@ export default class Room extends Component {
       method: "POST",
       headers: { "Content-Type": "application/json" },
     };
-    fetch("/api/leave-room", requestOptions).then((_response) => {
+    fetch("http://127.0.0.1:5000/leave-room", requestOptions).then((_response) => {
       this.props.leaveRoomCallback();
       this.props.history.push("/");
     });
